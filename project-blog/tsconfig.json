@@ -1,5 +1,18 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "dashes",
+          "customMatcher": "\\.m\\.css$",
+          "customRenderer": "./myRenderer.js",
+          "dotenvOptions": {},
+          "postcssOptions": {},
+          "rendererOptions": {}
+        }
+      }
+    ],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -21,5 +34,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
 }

@@ -1,0 +1,13 @@
+.footer {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDF3;
+}
+
+.logo-footer span {
+    font-weight: 900;
+    text-transform: uppercase;
+}
