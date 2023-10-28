@@ -4,14 +4,16 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
 import {IconButton} from "@mui/material";
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import './blog-button.css';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import './blog-input.css';
 
 type Props = {
     isPassword?: boolean,
+    isEmail?: boolean,
 }
 
-const BlogButton = (props: Props) => {
-    const { isPassword = false } = props;
+const BlogInput = (props: Props) => {
+    const { isPassword = false, isEmail = true } = props;
     const [ showPassword, setShowPassword ] = useState(false);
 
     const handleClickShowPassword = () => {
@@ -34,11 +36,11 @@ const BlogButton = (props: Props) => {
                 </div>
             ) : (
                 <div className='content-email'>
-                    <EmailOutlinedIcon className='icon' />
+                    {isEmail ?  <EmailOutlinedIcon className='icon' /> : <PersonOutlineOutlinedIcon className='icon'/>}
                     <input className='input'
                            type='text'
                            required
-                           placeholder='Email'
+                           placeholder={isEmail ? 'Email' : 'Usuário'}
                     />
                 </div>
             )
@@ -46,4 +48,4 @@ const BlogButton = (props: Props) => {
         </>
     )
 }
-export default BlogButton;
+export default BlogInput;

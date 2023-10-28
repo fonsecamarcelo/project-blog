@@ -1,0 +1,26 @@
+.register-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+}
+
+.register-label {
+    margin-top: 1em;
+}
+.register-label span {
+    margin-bottom: 3rem;
+}
+
+.button-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+}
