@@ -5,9 +5,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import {initializeApp} from "firebase/app";
+import {firebaseConfig} from "./firebase/config";
 import './App.css'
 
-function App() {
+const App = () => {
+    const app = initializeApp(firebaseConfig);
   return (
     <div className='App'>
         <BrowserRouter>

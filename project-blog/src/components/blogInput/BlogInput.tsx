@@ -10,10 +10,12 @@ import './blog-input.css';
 type Props = {
     isPassword?: boolean,
     isEmail?: boolean,
+    value?: any,
+    onChange?: any,
 }
 
 const BlogInput = (props: Props) => {
-    const { isPassword = false, isEmail = true } = props;
+    const { isPassword = false, isEmail = true, value, onChange } = props;
     const [ showPassword, setShowPassword ] = useState(false);
 
     const handleClickShowPassword = () => {
@@ -29,6 +31,8 @@ const BlogInput = (props: Props) => {
                            type={showPassword ? 'text' : 'password'}
                            required
                            placeholder='Senha'
+                           value={value}
+                           onChange={onChange}
                     />
                     <IconButton className='icon-visibility' onClick={handleClickShowPassword}>
                         {showPassword ? <VisibilityOutlinedIcon /> : <VisibilityOffOutlinedIcon/>}
@@ -41,6 +45,8 @@ const BlogInput = (props: Props) => {
                            type='text'
                            required
                            placeholder={isEmail ? 'Email' : 'Usuário'}
+                           value={value}
+                           onChange={onChange}
                     />
                 </div>
             )
