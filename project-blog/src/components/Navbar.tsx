@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
 import './navbar.css'
 
-const Navbar = () => {
+type Props = {
+    user: any;
+}
+
+const Navbar = (props: Props) => {
+    const {user} = props;
+
     return(
         <nav className='navbar'>
             <div className='logo'>
@@ -11,12 +17,28 @@ const Navbar = () => {
                 <li>
                     <NavLink to='/'>Home</NavLink>
                 </li>
-                <li>
-                    <NavLink to='/login'>Entrar</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/register'>Cadastrar</NavLink>
-                </li>
+                {!user && (
+                    <>
+                        <li>
+                            <NavLink to='/login'>Entrar</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/register'>Cadastrar</NavLink>
+                        </li>
+                    </>
+                )}
+
+                {user && (
+                    <>
+                        <li>
+                            <NavLink to='/posts/create'>Novo post</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/dashboard'>Dashboard</NavLink>
+                        </li>
+                    </>
+                )}
+
                 <li>
                     <NavLink to='/about'>Sobre</NavLink>
                 </li>
