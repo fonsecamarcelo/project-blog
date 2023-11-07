@@ -8,7 +8,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { createUser, error, loading } = useAuth();
+    const { logIn, error, loading } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,7 +31,7 @@ const Login = () => {
             console.log('email invalido')
         }
 
-        const response = await createUser(user);
+        const response = await logIn(user);
 
         console.log(response);
     }

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import {useAuth} from "../hooks/useAuth";
 import './navbar.css'
 
 type Props = {
@@ -7,6 +8,7 @@ type Props = {
 
 const Navbar = (props: Props) => {
     const {user} = props;
+    const { logOut } = useAuth();
 
     return(
         <nav className='navbar'>
@@ -38,10 +40,14 @@ const Navbar = (props: Props) => {
                         </li>
                     </>
                 )}
-
                 <li>
                     <NavLink to='/about'>Sobre</NavLink>
                 </li>
+                {user && (
+                    <li>
+                        <button onClick={logOut}>Sair</button>
+                    </li>
+                )}
             </ul>
         </nav>
     )
