@@ -30,9 +30,9 @@ const App = () => {
         })
     },[auth])
 
-    if (loadingUser) {
-        return <p>Carregando...</p>
-    }
+    // if (loadingUser) {
+    //     return <p>Carregando...</p>
+    // }
 
   return (
     <div className='App'>

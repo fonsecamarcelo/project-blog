@@ -1,0 +1,26 @@
+.login-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+}
+
+.login-label {
+    margin-top: 1em;
+}
+.login-label span {
+    margin-bottom: 3rem;
+}
+
+.login-button-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+}

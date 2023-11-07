@@ -1,14 +1,17 @@
 import './form-button.css';
 
 type Props = {
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    text?: string;
 }
 
 const FormButton = (props: Props) => {
-    const { onClick } = props;
+    const { onClick, text = 'Registre-se' } = props;
     return (
         <>
-            <button onClick={onClick}>Registre-se</button>
+            <button
+                className='form-button'
+                onClick={onClick}>{text}</button>
         </>
     )
 }

@@ -94,8 +94,8 @@ const Register = () => {
                     </div>
                 </label>
             </form>
-            <div className='button-form'>
-                <FormButton  onClick={handleSubmit}/>
+            <div className='register-button-form'>
+                <FormButton text='Entrar' onClick={handleSubmit}/>
             </div>
         </div>
     )
