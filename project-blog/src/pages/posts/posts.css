@@ -1,0 +1,19 @@
+.post-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+}
+.post-label {
+    margin-top: 1em;
+    min-width: 3rem;
+}
+.post-label span {
+    margin-bottom: 3rem;
+}

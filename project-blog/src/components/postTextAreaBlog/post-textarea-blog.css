@@ -1,0 +1,10 @@
+.post-textarea {
+    display: block;
+    margin-top: 0.5rem;
+    border: 1px solid #DDD;
+    border-radius: 0.25rem;
+    padding: 0.75rem 0.75rem;
+    transition: 0.15s ease;
+    min-height: 100px;
+    min-width: 18.75rem;
+}
