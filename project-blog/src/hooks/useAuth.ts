@@ -38,7 +38,7 @@ export const useAuth = () => {
             )
 
             await updateProfile(user, {
-                displayName: data.displayName
+                displayName: data.name
             })
 
             return user

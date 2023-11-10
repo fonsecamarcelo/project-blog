@@ -1,24 +1,53 @@
 import {useState} from "react";
 import PostInputBlog from "../../components/postInputBlog/PostInputBlog";
 import PostTextAreaBlog from "../../components/postTextAreaBlog/PostTextAreaBlog";
+import {useInsertDocument} from "../../hooks/useInsertDocument";
+import FormButton from "../../components/formButton/FormButton";
+import {useNavigate} from "react-router-dom";
 import './posts.css';
 
-const Posts = () => {
+const Posts = ({user}) => {
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
     const [body, setBody] = useState('');
     // const [formError, setFormError] = useState('');
     const [tags, setTags] = useState([]);
 
+    const {insertDocument, response} = useInsertDocument('posts');
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        //validate url
+        try {
+            new URL(image);
+        } catch (error) {
+            console.log('a imagem precisa ser uma url')
+        }
+
+        const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase())
+
+        if (!title || !image || !tags || !body) {
+            console.log('por favor preencha todos os campos')
+        }
+
+        insertDocument({
+            title,
+            image,
+            body,
+            tagsArray,
+            uid: user.uid,
+            createdBy: user.displayName
+        })
+
+        navigate('/')
     }
 
     return (
-        <div>
+        <div className='post'>
             <h2 className='post-header'>Criar post</h2>
-            <h2 className='post-header'>Compartilhe momentos</h2>
-            <form className='post-form' onSubmit={handleSubmit}>
+            <p className='post-header'>Compartilhe momentos</p>
+            <form className='post-form'>
                 <label>
                     <div className='post-label'>
                         <span>Título</span>
@@ -34,10 +63,14 @@ const Posts = () => {
                     </div>
                     <div className='post-label'>
                         <span>Tags</span>
-                        <PostInputBlog name='tags' placeholder='Insira as tags' onChange={(e) => setTags(e.target.value)} value={tags}/>
+                        <PostInputBlog name='tags' placeholder='Insira as tags separadas por vírgula' onChange={(e) => setTags(e.target.value)} value={tags}/>
                     </div>
+
                 </label>
             </form>
+            <div className='post-button'>
+                <FormButton text='criar post' onClick={handleSubmit}/>
+            </div>
         </div>
     )
 }

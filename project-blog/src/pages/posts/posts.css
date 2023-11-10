@@ -4,7 +4,12 @@
     align-items: center;
 }
 
-.post-form {
+.post p {
+    color: #aaa;
+    margin-bottom: 2em;
+}
+
+.post-form, .post-button {
     display: flex;
     justify-content: center;
     align-items: center;

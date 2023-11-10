@@ -5,18 +5,18 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import {initializeApp} from "firebase/app";
-import {firebaseConfig} from "./firebase/config";
 import {AuthProvider} from "./context/AuthContext";
 import {onAuthStateChanged} from 'firebase/auth';
 import {useState, useEffect} from "react";
 import {useAuth} from "./hooks/useAuth";
-import './App.css'
 import Posts from "./pages/posts/Posts";
 import Dashboard from "./pages/dashboard/Dashboard";
+import {app} from "./firebase/config";
+import './App.css'
 
 const App = () => {
-    const app = initializeApp(firebaseConfig);
+    //firebase starter
+    app
 
     const [user, setUser] = useState(null);
     const { auth } = useAuth();
@@ -45,7 +45,7 @@ const App = () => {
                         <Route path='/about' element={<About />}/>
                         <Route path='/login' element={!user ? <Login /> : <Navigate to='/'/>}/>
                         <Route path='/register' element={!user ? <Register /> : <Navigate to='/'/>}/>
-                        <Route path='/posts/create' element={user ? <Posts /> : <Navigate to='/login'/>}/>
+                        <Route path='/posts/create' element={user ? <Posts user={user} /> : <Navigate to='/login'/>}/>
                         <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/login'/>}/>
                     </Routes>
                 </div>
