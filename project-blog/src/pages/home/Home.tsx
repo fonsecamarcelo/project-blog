@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import PostInputBlog from "../../components/postInputBlog/PostInputBlog";
 import {useFetchDocuments} from "../../hooks/useFetchDocuments";
 import './home.css'
+import PostDetail from "../../components/PostDetail";
 
 const Home = () => {
     const [query, setQuery] = useState('');
@@ -25,9 +26,8 @@ const Home = () => {
                 </div>
             )
         } else {
-            component = posts.map((post) => (
-                <h3>{post.title}</h3>
-            ))
+            component = posts.map((post) => <PostDetail key={post.id} post={post}/>
+            )
         }
         return component;
     }
