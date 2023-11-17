@@ -6,7 +6,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
     const [documents, setDocuments] = useState([]);
     const [error, setError] = useState(null);
-    const [loading, setLoaging] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     //memory leak
     const [cancelled, setCancelled] = useState(false);
@@ -16,13 +16,19 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         async function loadData() {
             if (cancelled) return;
 
-            setLoaging(true);
+            setLoading(true);
 
             const collectionRef = await collection(db, docCollection);
 
             try {
                 let q;
-                q = await query(collectionRef, orderBy('createdAt', "desc"));
+
+                if (search) {
+                    q = await query(collectionRef, where('tagsArray', 'array-contains', search), orderBy('createdAt', "desc"));
+
+                } else {
+                    q = await query(collectionRef, orderBy('createdAt', "desc"));
+                }
 
                 await onSnapshot(q,(querySnapshot) => {
                     setDocuments(
@@ -31,13 +37,13 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                             ...doc.data(),
                         }))
                     )
-                    setLoaging(false);
+                    setLoading(false);
                 })
 
             } catch (error) {
                 console.log(error)
                 setError(error.message);
-                setLoaging(false);
+                setLoading(false);
             }
         }
 

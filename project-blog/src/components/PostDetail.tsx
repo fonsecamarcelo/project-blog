@@ -7,6 +7,8 @@ type Props = {
 
 const PostDetail = (props: Props) => {
     const {post} = props;
+    console.log(post)
+
     return (
         <div className='post-detail'>
             <img src={post.image} alt={post.title}/>
@@ -14,10 +16,11 @@ const PostDetail = (props: Props) => {
             <p className='post-detail-createdBy'>{`@${post.createdBy}`}</p>
             <div className='post-detail-tags'>
                 {post.tagsArray.map((tag) => {
-                    <p key={tag}>
+                  return (
+                      <p key={tag}>
                         <span>#</span>
                         {tag}
-                    </p>
+                    </p>)
                 })}
             </div>
             <Link to={`/posts/${post.id}`}>Ler</Link>

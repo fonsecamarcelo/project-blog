@@ -12,7 +12,9 @@ import {useAuth} from "./hooks/useAuth";
 import Posts from "./pages/posts/Posts";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {app} from "./firebase/config";
+import Search from "./pages/Search/Search";
 import './App.css'
+
 
 const App = () => {
     //firebase starter
@@ -43,6 +45,7 @@ const App = () => {
                     <Routes>
                         <Route path='/' element={<Home />}/>
                         <Route path='/about' element={<About />}/>
+                        <Route path='/search' element={<Search />}/>
                         <Route path='/login' element={!user ? <Login /> : <Navigate to='/'/>}/>
                         <Route path='/register' element={!user ? <Register /> : <Navigate to='/'/>}/>
                         <Route path='/posts/create' element={user ? <Posts user={user} /> : <Navigate to='/login'/>}/>
