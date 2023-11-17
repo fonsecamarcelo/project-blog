@@ -18,7 +18,8 @@ const PostTextAreaBlog = (props: Props) => {
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
-            ></textarea>
+            >
+            </textarea>
         </>
     )
 }

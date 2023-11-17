@@ -2,7 +2,7 @@ import './post-input-blog.css';
 
 type Props = {
     placeholder: string,
-    value: any,
+    value?: any,
     onChange: any;
     name: string;
 }

@@ -1,7 +1,7 @@
 import './form-button.css';
 
 type Props = {
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
     text?: string;
 }
 
