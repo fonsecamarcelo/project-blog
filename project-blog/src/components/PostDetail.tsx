@@ -6,7 +6,6 @@ type Props = {
 
 const PostDetail = (props: Props) => {
     const {post} = props;
-    console.log(post)
 
     return (
         <div className='post-detail'>

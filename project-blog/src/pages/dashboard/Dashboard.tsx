@@ -2,6 +2,7 @@ import {useAuthValue} from "../../context/AuthContext";
 import {Link} from "react-router-dom";
 import ButtonAbout from "../../components/buttonAbout/buttonAbout";
 import {useFetchDocuments} from "../../hooks/useFetchDocuments";
+import {useDeleteDocument} from "../../hooks/useDeleteDocument";
 import './dashboard.css';
 
 const Dashboard = () => {
@@ -10,9 +11,7 @@ const Dashboard = () => {
 
     const {documents: posts, loading} = useFetchDocuments('posts', null, uid)
 
-    const deleteDocument = (id) => {
-
-    }
+    const {deleteDocument} = useDeleteDocument('posts');
 
     if (loading) {
         return <span>Carregando...</span>
@@ -21,17 +20,17 @@ const Dashboard = () => {
     return (
         <div className='dashboard-container'>
             <h2>Dashboard</h2>
-            <p>Gerencie os seus posts</p>
+            <p>Gerencie seus posts</p>
             {posts && posts.length === 0 ? (
                 <div className='noposts'>
                     <p>Não foram encontrados posts</p>
-                    <Link to='/posts/create'>
+                    <Link className='noposts-button' to='/posts/create'>
                         <ButtonAbout/>
                     </Link>
                 </div>
             ) : (
                 <>
-                    <div className='post-header'>
+                    <div className='post-header-dashboard'>
                         <span>Título</span>
                         <span>Ações</span>
                     </div>

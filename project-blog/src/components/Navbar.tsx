@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 import {useAuth} from "../hooks/useAuth";
+import {User} from "../domain/user";
 import './navbar.css'
 
 type Props = {
-    user: any;
+    user: User;
 }
 
 const Navbar = (props: Props) => {

@@ -28,14 +28,19 @@
     padding: 10px 25px;
 }
 
-.post-header, .post-row {
+.noposts-button {
+    display: flex;
+    justify-content: center;
+}
+
+.post-header-dashboard, .post-row {
     display: flex;
     justify-content: space-between;
     width: 80%;
     padding: 10px;
 }
 
-.post-header {
+.post-header-dashboard {
     font-weight: bold;
     border-bottom: 2px solid #CCC;
 }
