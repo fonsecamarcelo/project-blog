@@ -9,12 +9,11 @@ import {AuthProvider} from "./context/AuthContext";
 import {onAuthStateChanged} from 'firebase/auth';
 import {useState, useEffect} from "react";
 import {useAuth} from "./hooks/useAuth";
-import Posts from "./pages/posts/Posts";
+import CreatePosts from "./pages/createPosts/CreatePosts";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {app} from "./firebase/config";
 import Search from "./pages/Search/Search";
 import './App.css'
-
 
 const App = () => {
     //firebase starter
@@ -22,7 +21,6 @@ const App = () => {
 
     const [user, setUser] = useState(null);
     const { auth } = useAuth();
-    console.log({user})
 
     const loadingUser = user === null;
 
@@ -48,7 +46,7 @@ const App = () => {
                         <Route path='/search' element={<Search />}/>
                         <Route path='/login' element={!user ? <Login /> : <Navigate to='/'/>}/>
                         <Route path='/register' element={!user ? <Register /> : <Navigate to='/'/>}/>
-                        <Route path='/posts/create' element={user ? <Posts user={user} /> : <Navigate to='/login'/>}/>
+                        <Route path='/posts/create' element={user ? <CreatePosts user={user} /> : <Navigate to='/login'/>}/>
                         <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/login'/>}/>
                     </Routes>
                 </div>

@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import './post-detail.css'
 
 type Props = {
@@ -23,7 +22,6 @@ const PostDetail = (props: Props) => {
                     </p>)
                 })}
             </div>
-            <Link to={`/posts/${post.id}`}>Ler</Link>
         </div>
     )
 }

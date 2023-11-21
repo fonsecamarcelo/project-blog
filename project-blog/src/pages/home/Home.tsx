@@ -8,7 +8,8 @@ import './home.css'
 
 const Home = () => {
     const [query, setQuery] = useState('');
-    const {documents: posts, loading} = useFetchDocuments('posts')
+    const {documents: posts, loading} = useFetchDocuments('createPosts')
+    console.log({posts})
 
     const navigate = useNavigate();
 
