@@ -13,6 +13,8 @@ import CreatePosts from "./pages/createPosts/CreatePosts";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {app} from "./firebase/config";
 import Search from "./pages/Search/Search";
+import EditPost from "./pages/editPost/editPost";
+import {ToastContainer} from "react-toastify";
 import './App.css'
 
 const App = () => {
@@ -46,11 +48,17 @@ const App = () => {
                         <Route path='/search' element={<Search />}/>
                         <Route path='/login' element={!user ? <Login /> : <Navigate to='/'/>}/>
                         <Route path='/register' element={!user ? <Register /> : <Navigate to='/'/>}/>
+                        <Route path='/posts/edit/:id' element={user ? <EditPost user={user} /> : <Navigate to='/login'/>}/>
                         <Route path='/posts/create' element={user ? <CreatePosts user={user} /> : <Navigate to='/login'/>}/>
                         <Route path='/dashboard' element={user ? <Dashboard /> : <Navigate to='/login'/>}/>
                     </Routes>
                 </div>
                 <Footer/>
+                <ToastContainer
+                    position="bottom-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            theme="colored"/>
             </BrowserRouter>
         </AuthProvider>
     </div>

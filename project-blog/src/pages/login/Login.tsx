@@ -33,7 +33,6 @@ const Login = () => {
 
         const response = await logIn(user);
 
-        console.log(response);
     }
     return (
         <>

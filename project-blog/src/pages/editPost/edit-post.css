@@ -1,0 +1,24 @@
+.edit-post-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-post p {
+    color: #aaa;
+    margin-bottom: 2em;
+}
+
+.edit-post-form, .edit-post-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5em;
+}
+.edit-post-label {
+    margin-top: 1em;
+    min-width: 3rem;
+}
+.edit-post-label span {
+    margin-bottom: 3rem;
+}

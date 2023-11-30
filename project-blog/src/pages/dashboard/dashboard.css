@@ -60,3 +60,8 @@
     width: 100px;
     font-size: 0.7em;
 }
+
+.button-dashboard:hover {
+    background-color: #fa6e6e;
+    cursor: pointer;
+}
