@@ -57,10 +57,6 @@ export const useAuth = () => {
             } else if(error.message.includes('email-already')) {
                 toast.error('E-mail já cadastrado.')
                 return systemErrorMessage;
-            } else {
-                toast.error('Ocorreu um erro, por favor tente mais tarde.')
-                systemErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.'
-                return systemErrorMessage;
             }
 
             setError(systemErrorMessage);

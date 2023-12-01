@@ -43,6 +43,8 @@ const Register = () => {
             console.log('As senhas precisam ser iguais');
         } else if (!validate(email)) {
             toast.error('email invalido');
+        } else {
+            toast.error('Ocorreu um erro, por favor tente mais tarde.')
         }
 
         const response = await createUser(user);
