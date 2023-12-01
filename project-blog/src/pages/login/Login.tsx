@@ -2,13 +2,14 @@ import BlogInput from "../../components/blogInput/BlogInput";
 import FormButton from "../../components/formButton/FormButton";
 import {useState} from "react";
 import {useAuth} from "../../hooks/useAuth";
+import {toast} from "react-toastify";
 import './login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { logIn, error, loading } = useAuth();
+    const { logIn } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,11 +25,10 @@ const Login = () => {
         }
 
         if (email.length === 0 ) {
-            console.log('voce deve preencher todos os campos')
         } else if (password.length === 0) {
-            console.log('voce deve preencher todos os campos')
+            toast.error('O campo da senha deve ser preenchido')
         } else if (!validate(email)) {
-            console.log('email invalido')
+            toast.error('email invalido')
         }
 
         const response = await logIn(user);
@@ -62,7 +62,6 @@ const Login = () => {
                 <FormButton text='Entrar' onClick={handleSubmit}/>
             </div>
         </>
-
     )
 }
 export default Login;

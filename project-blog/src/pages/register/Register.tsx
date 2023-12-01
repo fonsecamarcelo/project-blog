@@ -1,7 +1,8 @@
 import BlogInput from "../../components/blogInput/BlogInput";
 import FormButton from "../../components/formButton/FormButton";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useAuth} from "../../hooks/useAuth";
+import {toast} from "react-toastify";
 import './register.css'
 
 const Register = () => {
@@ -10,7 +11,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const { createUser, error, loading } = useAuth();
+    const { createUser } = useAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,31 +28,27 @@ const Register = () => {
         }
 
         if (name.length === 0 ) {
-            console.log('voce deve preencher todos os campos')
+            toast.error('O campo do nome deve ser preenchido');
         } else if (email.length === 0 ) {
+            toast.error('O campo do email deve ser preenchido');
             console.log('voce deve preencher todos os campos')
         } else if (password.length === 0) {
+            toast.error('O campo de senha deve ser preenchido');
             console.log('voce deve preencher todos os campos')
         } else if (confirmPassword.length === 0 ) {
+            toast.error('O campo de confirmaçao de senha deve ser preenchido');
             console.log('voce deve preencher todos os campos')
         } else if (password !== confirmPassword) {
+            toast.error('As senhas precisam ser iguais');
             console.log('As senhas precisam ser iguais');
         } else if (!validate(email)) {
-            console.log('email invalido')
+            toast.error('email invalido');
         }
 
         const response = await createUser(user);
 
         console.log(response);
     }
-
-    //TO DO
-    //verificação caso o erro tenha mudado
-
-    // useEffect(() => {
-    //
-    //
-    // }, [error])
 
     return (
         <div>

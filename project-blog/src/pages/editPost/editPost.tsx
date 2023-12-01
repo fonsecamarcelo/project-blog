@@ -14,10 +14,10 @@ type Props = {
 const EditPost = (props: Props) => {
     const {user} = props;
 
-    const [title, setTitle] = useState('');
-    const [image, setImage] = useState('');
-    const [body, setBody] = useState('');
-    const [tags, setTags] = useState([]);
+    const [title, setTitle] = useState<string>('');
+    const [image, setImage] = useState<string>('');
+    const [body, setBody] = useState<string>('');
+    const [tags, setTags] = useState<[]>([]);
 
     const {insertDocument} = useInsertDocument('createPosts');
     const navigate = useNavigate()

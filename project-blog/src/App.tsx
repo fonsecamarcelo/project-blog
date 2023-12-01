@@ -7,7 +7,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import {AuthProvider} from "./context/AuthContext";
 import {onAuthStateChanged} from 'firebase/auth';
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {useAuth} from "./hooks/useAuth";
 import CreatePosts from "./pages/createPosts/CreatePosts";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -15,6 +15,7 @@ import {app} from "./firebase/config";
 import Search from "./pages/Search/Search";
 import EditPost from "./pages/editPost/editPost";
 import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
 
 const App = () => {
@@ -24,17 +25,12 @@ const App = () => {
     const [user, setUser] = useState(null);
     const { auth } = useAuth();
 
-    const loadingUser = user === null;
-
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             setUser(user);
         })
     },[auth])
 
-    // if (loadingUser) {
-    //     return <p>Carregando...</p>
-    // }
 
   return (
     <div className='App'>
@@ -56,9 +52,16 @@ const App = () => {
                 <Footer/>
                 <ToastContainer
                     position="bottom-right"
-                            autoClose={5000}
-                            hideProgressBar={false}
-                            theme="colored"/>
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                />
             </BrowserRouter>
         </AuthProvider>
     </div>

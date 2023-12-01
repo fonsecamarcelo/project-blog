@@ -5,6 +5,7 @@ import {useInsertDocument} from "../../hooks/useInsertDocument";
 import FormButton from "../../components/formButton/FormButton";
 import {useNavigate} from "react-router-dom";
 import './posts.css';
+import {toast} from "react-toastify";
 
 const Posts = ({user}) => {
     const [title, setTitle] = useState('');
@@ -22,13 +23,13 @@ const Posts = ({user}) => {
         try {
             new URL(image);
         } catch (error) {
-            console.log('a imagem precisa ser uma url')
+            toast.error('A imagem precisa ser uma url');
         }
 
         const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase())
 
         if (!title || !image || !tags || !body) {
-            console.log('por favor preencha todos os campos')
+            toast.error('Por favor preencha todos os campos');
         }
 
         insertDocument({

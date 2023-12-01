@@ -5,8 +5,8 @@ import {useInsertDocument} from "../../hooks/useInsertDocument";
 import FormButton from "../../components/formButton/FormButton";
 import {useNavigate} from "react-router-dom";
 import {User} from "../../domain/user";
-import './create-posts.css';
 import {toast} from "react-toastify";
+import './create-posts.css';
 
 type Props = {
     user: User,
@@ -30,13 +30,13 @@ const CreatePosts = (props: Props) => {
         try {
             new URL(image);
         } catch (error) {
-            toast.error('error');
+            toast.error('O campo de imagem deve ser uma Url');
         }
 
         const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase())
 
         if (!title || !image || !tags || !body) {
-            console.log('por favor preencha todos os campos')
+            toast.error('Por favor preencha todos os campos')
         }
 
         insertDocument({

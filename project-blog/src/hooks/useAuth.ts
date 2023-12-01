@@ -7,6 +7,7 @@ import {
 } from 'firebase/auth';
 
 import {useState, useEffect} from "react";
+import {toast} from "react-toastify";
 
 export const useAuth = () => {
     const [ error, setError ] = useState(null);
@@ -50,12 +51,14 @@ export const useAuth = () => {
             let systemErrorMessage;
 
             if (error.message.includes('Password')) {
+                toast.error('A senha precisa conter pelo menos 6 caracteres.')
                 systemErrorMessage = 'A senha precisa conter pelo menos 6 caracteres.'
                 return systemErrorMessage;
             } else if(error.message.includes('email-already')) {
-                systemErrorMessage = 'E-mail já cadastrado.'
+                toast.error('E-mail já cadastrado.')
                 return systemErrorMessage;
             } else {
+                toast.error('Ocorreu um erro, por favor tente mais tarde.')
                 systemErrorMessage = 'Ocorreu um erro, por favor tente mais tarde.'
                 return systemErrorMessage;
             }
@@ -84,8 +87,10 @@ export const useAuth = () => {
             let systemErrorMessage;
 
             if (error.message.includes('user-not-found')) {
+                toast.error('Usuário não encontrado')
                 systemErrorMessage = 'Usuário não encontrado'
             } else if (error.message.includes('wrong-password')) {
+                toast.error('Senha errada.')
                 systemErrorMessage = 'Senha errada.'
             } else {
                 systemErrorMessage = 'Ocorreu um erro'
